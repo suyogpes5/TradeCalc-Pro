@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>TradeCalc Pro</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="logo">
+      📈 TradeCalc Pro
+    </div>
+
+    <button id="menuBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </header>
+
+  <!-- OVERLAY -->
+  <div id="overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+
+    <h2>Menu</h2>
+
+    <div class="menu-title">
+      🏠 Home
+    </div>
+
+    <button
+      class="nav-btn active"
+      data-page="simplePage"
+    >
+      🧮 Simple Calculator
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="advancedPage"
+    >
+      🔬 Advanced Calculator
+    </button>
+
+    <div class="menu-title">
+      📊 Forex Tools
+    </div>
+
+    <button
+      class="nav-btn"
+      data-page="pipPage"
+    >
+      📈 Pip Calculator
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="pipConverterPage"
+    >
+      💵 Pip → USD/INR
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="positionPage"
+    >
+      💰 Position Size
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="marginPage"
+    >
+      🏦 Margin Calculator
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="rrPage"
+    >
+      🎯 Risk : Reward
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="compoundPage"
+    >
+      📊 Compounding & SIP
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="profitPage"
+    >
+      💹 Profit/Loss
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="currencyPage"
+    >
+      💱 Currency Converter
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="goldPage"
+    >
+      🥇 Gold Calculator
+    </button>
+
+    <button
+      class="nav-btn"
+      data-page="journalPage"
+    >
+      📝 Trading Journal
+    </button>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- SIMPLE CALCULATOR -->
+    <section
+      id="simplePage"
+      class="page active-page"
+    >
+      <div class="card">
+
+        <h2>
+          🧮 Simple Calculator
+        </h2>
+
+        <input
+          type="text"
+          id="display"
+          readonly
+        >
+
+        <div class="calculator-grid">
+
+          <button onclick="clearDisplay()">
+            AC
+          </button>
+
+          <button onclick="deleteLast()">
+            ⌫
+          </button>
+
+          <button onclick="appendValue('%')">
+            %
+          </button>
+
+          <button onclick="appendValue('/')">
+            ÷
+          </button>
+
+          <button onclick="appendValue('7')">
+            7
+          </button>
+
+          <button onclick="appendValue('8')">
+            8
+          </button>
+
+          <button onclick="appendValue('9')">
+            9
+          </button>
+
+          <button onclick="appendValue('*')">
+            ×
+          </button>
+
+          <button onclick="appendValue('4')">
+            4
+          </button>
+
+          <button onclick="appendValue('5')">
+            5
+          </button>
+
+          <button onclick="appendValue('6')">
+            6
+          </button>
+
+          <button onclick="appendValue('-')">
+            -
+          </button>
+
+          <button onclick="appendValue('1')">
+            1
+          </button>
+
+          <button onclick="appendValue('2')">
+            2
+          </button>
+
+          <button onclick="appendValue('3')">
+            3
+          </button>
+
+          <button onclick="appendValue('+')">
+            +
+          </button>
+
+          <button
+            class="zero"
+            onclick="appendValue('0')"
+          >
+            0
+          </button>
+
+          <button onclick="appendValue('.')">
+            .
+          </button>
+
+          <button
+            class="equal"
+            onclick="calculate()"
+          >
+            =
+          </button>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ADVANCED CALCULATOR -->
+    <section
+      id="advancedPage"
+      class="page"
+    >
+      <div class="card">
+
+        <h2>
+          🔬 Advanced Calculator
+        </h2>
+
+        <input
+          type="number"
+          id="advInput"
+          placeholder="Enter Number"
+        >
+
+        <div class="tool-grid">
+
+          <button onclick="square()">
+            x²
+          </button>
+
+          <button onclick="sqrtCalc()">
+            √x
+          </button>
+
+          <button onclick="factorialCalc()">
+            n!
+          </button>
+
+          <button onclick="logCalc()">
+            log
+          </button>
+
+          <button onclick="sinCalc()">
+            sin
+          </button>
+
+          <button onclick="cosCalc()">
+            cos
+          </button>
+
+          <button onclick="tanCalc()">
+            tan
+          </button>
+
+          <button onclick="showPi()">
+            π
+          </button>
+
+        </div>
+
+        <div
+          id="advResult"
+          class="result"
+        >
+          Result
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PIP CALCULATOR -->
+    <section
+      id="pipPage"
+      class="page"
+    >
+      <div class="card">
+
+        <h2>
+          📈 Pip Calculator
+        </h2>
+
+        <select id="pair">
+          <option value="10000">
+            EUR/USD
+          </option>
+
+          <option value="10000">
+            GBP/USD
+          </option>
+
+          <option value="100">
+            USD/JPY
+          </option>
+
+          <option value="100">
+            GBP/JPY
+          </option>
+        </select>
+
+        <input
+          type="number"
+          id="entry"
+          step="0.0001"
+          placeholder="Entry Price"
+        >
+
+        <input
+          type="number"
+          id="exit"
+          step="0.0001"
+          placeholder="Exit Price"
+        >
+
+        <input
+          type="number"
+          id="lotSize"
+          step="0.01"
+          placeholder="Lot Size"
+        >
+
+        <input
+          type="number"
+          id="usdRate"
+          value="86"
+          placeholder="USD to INR"
+        >
+
+        <div class="radio-group">
+
+          <label>
+            <input
+              type="radio"
+              name="position"
+              value="buy"
+              checked
+            >
+            Buy
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="position"
+              value="sell"
+            >
+            Sell
+          </label>
+
+        </div>
+
+        <button
+          onclick="calculatePips()"
+        >
+          Calculate
+        </button>
+
+        <div
+          id="pipResult"
+          class="result"
+        >
+          Result
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PLACEHOLDER PAGES -->
+
+   <section id="pipConverterPage" class="page">
+  <div class="card">
+
+    <h2>💵 Pip → USD/INR Converter</h2>
+
+    <input
+      type="number"
+      id="converterPips"
+      placeholder="Pips"
+    >
+
+    <input
+      type="number"
+      id="converterLot"
+      step="0.01"
+      placeholder="Lot Size"
+    >
+
+    <input
+      type="number"
+      id="converterRate"
+      value="86"
+      placeholder="USD to INR Rate"
+    >
+
+    <button onclick="convertPips()">
+      Convert
+    </button>
+
+    <div
+      id="converterResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="positionPage" class="page">
+  <div class="card">
+
+    <h2>💰 Position Size Calculator</h2>
+
+    <input
+      type="number"
+      id="positionBalance"
+      placeholder="Account Balance (₹)"
+    >
+
+    <input
+      type="number"
+      id="positionRisk"
+      placeholder="Risk % Per Trade"
+    >
+
+    <input
+      type="number"
+      id="positionSL"
+      placeholder="Stop Loss (Pips)"
+    >
+
+    <button onclick="calculatePosition()">
+      Calculate Position Size
+    </button>
+
+    <div
+      id="positionResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="marginPage" class="page">
+  <div class="card">
+
+    <h2>🏦 Margin Calculator</h2>
+
+    <input
+      type="number"
+      id="marginLot"
+      step="0.01"
+      placeholder="Lot Size"
+    >
+
+    <input
+      type="number"
+      id="marginPrice"
+      step="0.0001"
+      placeholder="Current Market Price"
+    >
+
+    <input
+      type="number"
+      id="marginLeverage"
+      placeholder="Leverage (Example: 100)"
+    >
+
+    <button onclick="calculateMargin()">
+      Calculate Margin
+    </button>
+
+    <div
+      id="marginResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+   <section id="rrPage" class="page">
+  <div class="card">
+
+    <h2>🎯 Risk : Reward Calculator</h2>
+
+    <input
+      type="number"
+      id="rrEntry"
+      placeholder="Entry Price"
+    >
+
+    <input
+      type="number"
+      id="rrSL"
+      placeholder="Stop Loss"
+    >
+
+    <input
+      type="number"
+      id="rrTP"
+      placeholder="Take Profit"
+    >
+
+    <button onclick="calculateRR()">
+      Calculate
+    </button>
+
+    <div
+      id="rrResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="compoundPage" class="page">
+  <div class="card">
+
+    <h2>📊 Compounding Calculator</h2>
+
+    <input
+      type="number"
+      id="capital"
+      placeholder="Starting Capital"
+    >
+
+    <input
+      type="number"
+      id="monthlyReturn"
+      placeholder="Monthly Return %"
+    >
+
+    <input
+      type="number"
+      id="months"
+      placeholder="Months"
+    >
+
+    <hr>
+
+    <h2 style="margin-top:25px;">
+      📈 SIP Calculator
+    </h2>
+
+    <input
+      type="number"
+      id="sipAmount"
+      placeholder="Monthly Investment"
+    >
+
+    <input
+      type="number"
+      id="sipReturn"
+      placeholder="Expected Annual Return %"
+    >
+
+    <input
+      type="number"
+      id="sipYears"
+      placeholder="Investment Years"
+    >
+
+    <button onclick="calculateCompound()">
+      Calculate
+    </button>
+
+    <div
+      id="compoundResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="profitPage" class="page">
+  <div class="card">
+
+    <h2>💹 Profit / Loss Calculator</h2>
+
+    <input
+      type="number"
+      id="profitEntry"
+      placeholder="Entry Price"
+    >
+
+    <input
+      type="number"
+      id="profitExit"
+      placeholder="Exit Price"
+    >
+
+    <input
+      type="number"
+      id="profitQty"
+      placeholder="Quantity / Lots"
+    >
+
+    <button onclick="calculateProfit()">
+      Calculate
+    </button>
+
+    <div
+      id="profitResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="currencyPage" class="page">
+  <div class="card">
+
+    <h2>💱 Currency Converter</h2>
+
+    <input
+      type="number"
+      id="usdAmount"
+      placeholder="USD Amount"
+    >
+
+    <input
+      type="number"
+      id="usdInrRate"
+      value="86"
+      placeholder="USD to INR Rate"
+    >
+
+    <button onclick="convertCurrency()">
+      Convert
+    </button>
+
+    <div
+      id="currencyResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="goldPage" class="page">
+  <div class="card">
+
+    <h2>🥇 Gold Pip Calculator</h2>
+
+    <input
+      type="number"
+      id="goldEntry"
+      placeholder="Entry Price"
+    >
+
+    <input
+      type="number"
+      id="goldExit"
+      placeholder="Exit Price"
+    >
+
+    <input
+      type="number"
+      id="goldLot"
+      step="0.01"
+      placeholder="Lot Size"
+    >
+
+    <button onclick="calculateGold()">
+      Calculate
+    </button>
+
+    <div
+      id="goldResult"
+      class="result"
+    >
+      Result
+    </div>
+
+  </div>
+</section>
+
+    <section id="journalPage" class="page">
+  <div class="card">
+
+    <h2>📝 Trading Journal</h2>
+
+    <input
+      type="date"
+      id="tradeDate"
+    >
+
+    <input
+      type="text"
+      id="tradePair"
+      placeholder="Currency Pair"
+    >
+
+    <select id="tradeType">
+      <option>Buy</option>
+      <option>Sell</option>
+    </select>
+
+    <input
+      type="number"
+      id="tradePnL"
+      placeholder="Profit / Loss"
+    >
+
+    <textarea
+      id="tradeNotes"
+      placeholder="Trade Notes"
+      rows="4"
+      style="
+        width:100%;
+        margin-top:15px;
+        padding:15px;
+        border-radius:14px;
+        background:rgba(255,255,255,0.05);
+        color:white;
+        border:none;
+      "
+    ></textarea>
+
+    <button onclick="saveTradeJournal()">
+      Save Trade
+    </button>
+
+    <div
+      id="journalStats"
+      class="result"
+    >
+      No trades yet.
+    </div>
+
+    <div
+      id="journalList"
+      style="margin-top:25px;"
+    >
+    </div>
+
+  </div>
+</section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

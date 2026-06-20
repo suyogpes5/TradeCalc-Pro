@@ -1,0 +1,561 @@
+/* =========================
+   GOOGLE FONT
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --bg: #0f172a;
+  --bg2: #1e293b;
+  --card: rgba(30, 41, 59, 0.85);
+  --border: rgba(255, 255, 255, 0.08);
+  --white: #ffffff;
+  --text: #cbd5e1;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  background:
+    linear-gradient(
+      135deg,
+      #020617,
+      #0f172a,
+      #1e293b
+    );
+
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  height: 75px;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 30px;
+
+  background:
+    rgba(15, 23, 42, 0.9);
+
+  backdrop-filter: blur(15px);
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+#menuBtn {
+  width: 50px;
+  height: 50px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: var(--bg2);
+  color: white;
+
+  font-size: 22px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#menuBtn:hover {
+  background: var(--blue);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: -330px;
+
+  width: 320px;
+  height: 100vh;
+
+  background:
+    rgba(2, 6, 23, 0.97);
+
+  backdrop-filter: blur(20px);
+
+  padding: 30px 20px;
+
+  overflow-y: auto;
+
+  transition: 0.4s;
+  z-index: 300;
+}
+
+#sidebar.active {
+  right: 0;
+}
+
+#sidebar h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.menu-title {
+  margin-top: 25px;
+  margin-bottom: 15px;
+
+  font-weight: 600;
+  color: var(--green);
+}
+
+/* =========================
+   NAV BUTTON
+========================= */
+
+.nav-btn {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-bottom: 12px;
+
+  background: #1e293b;
+
+  border: none;
+  border-radius: 15px;
+
+  color: white;
+  font-size: 15px;
+  text-align: left;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--blue);
+}
+
+.nav-btn.active {
+  background: var(--green);
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+#overlay {
+  position: fixed;
+  inset: 0;
+
+  background:
+    rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.3s;
+  z-index: 250;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 35px 20px;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+  display: none;
+}
+
+.active-page {
+  display: block;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  background: var(--card);
+
+  backdrop-filter: blur(20px);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 28px;
+
+  padding: 35px;
+
+  box-shadow: var(--shadow);
+
+  animation: fadeIn 0.4s ease;
+}
+
+.card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+input,
+select {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-bottom: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  color: white;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 14px;
+
+  font-size: 16px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.card button {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: var(--green);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   RESULT BOX
+========================= */
+
+.result {
+  margin-top: 25px;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.profit {
+  color: var(--green);
+}
+
+.loss {
+  color: var(--red);
+}
+
+/* =========================
+   RADIO BUTTONS
+========================= */
+
+.radio-group {
+  display: flex;
+  gap: 35px;
+  margin-top: 15px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================
+   SIMPLE CALCULATOR
+========================= */
+
+#display {
+  height: 80px;
+
+  margin-bottom: 20px;
+
+  font-size: 30px;
+  text-align: right;
+}
+
+/* =========================
+   CALCULATOR GRID
+========================= */
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+}
+
+.calculator-grid button {
+  width: 100%;
+  height: 65px;
+
+  margin: 0;
+
+  background: #334155;
+
+  border: none;
+  border-radius: 16px;
+
+  color: white;
+  font-size: 22px;
+}
+
+.calculator-grid button:hover {
+  background: var(--blue);
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+.equal {
+  background: var(--green)
+    !important;
+}
+
+/* =========================
+   ADVANCED TOOLS
+========================= */
+
+.tool-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin-top: 20px;
+}
+
+.tool-grid button {
+  width: 100%;
+  height: 60px;
+
+  background: #334155;
+
+  border: none;
+  border-radius: 14px;
+
+  color: white;
+  font-size: 18px;
+}
+
+.tool-grid button:hover {
+  background: var(--blue);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform:
+      translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+/* =========================
+   TABLE STYLING
+========================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background: #334155;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  header {
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  #sidebar {
+    width: 270px;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  .tool-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .calculator-grid button {
+    height: 58px;
+    font-size: 20px;
+  }
+
+  #display {
+    font-size: 25px;
+    height: 70px;
+  }
+
+  .radio-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  main {
+    padding: 20px 15px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .calculator-grid {
+    gap: 10px;
+  }
+
+  .tool-grid {
+    gap: 10px;
+  }
+
+  .calculator-grid button {
+    height: 55px;
+    font-size: 18px;
+  }
+
+  .tool-grid button {
+    height: 55px;
+    font-size: 16px;
+  }
+
+  #display {
+    font-size: 22px;
+    height: 65px;
+  }
+}
