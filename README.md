@@ -33,3 +33,9 @@ An all-in-one trading calculator suite for Forex and retail traders built using 
 ## 👨‍💻 Author
 
 Suyog Samarth
+
+## Live Demo
+https://suyogpes5.github.io/TradeCalc-Pro/
+
+## GitHub Repository
+https://github.com/suyogpes5/TradeCalc-Pro
